@@ -1,0 +1,27 @@
+vector<int> snakePattern(vector<vector<int> > matrix)
+    {   
+        bool flag=true;
+        int m=matrix.size();
+        int n=matrix[0].size();
+        vector<int>mad;
+        for(int i=0;i<m;i++)
+        {
+            if(flag)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    mad.push_back(matrix[i][j]);
+                }
+                flag=false;
+            }
+            else
+            {
+                for(int j=n-1;j>=0;j--)
+                {
+                    mad.push_back(matrix[i][j]);
+                }
+                flag=true;
+            }
+        }
+        return mad;
+    }
