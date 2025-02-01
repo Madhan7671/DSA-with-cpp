@@ -1,0 +1,27 @@
+//firstly initialize the matrix with all zeros and then do the multiplication operation and then at last compare the resultant matrix and return bool value
+//time complexity of this solution was O(N^3)
+bool multiplyMatrix(int mat1[4][4], int mat2[4][4], int result[4][4]) {
+        int n=4;
+        vector<vector<int>>mad(n,vector<int>(n,0));
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                for(int k=0;k<n;k++)
+                {
+                    mad[i][j]+=mat1[i][k]*mat2[k][j];
+                }
+            }
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(mad[i][j]!=result[i][j])
+                {
+                return false;
+                }
+            }
+        }
+        return true;
+    }
