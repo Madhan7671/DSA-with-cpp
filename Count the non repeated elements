@@ -1,0 +1,18 @@
+---time complexity of O(N)---
+int count(vector<int>& mad)
+{
+unordered_map<int,int> map;
+int count=0;
+for(int i:mad)
+{
+map[i]++;
+}
+for(auto& i:map)
+{
+if(i.second==1)
+{
+count++;
+}
+}
+return count;
+}
