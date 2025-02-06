@@ -1,0 +1,22 @@
+vector<int> sortByFreq(vector<int>& arr) {
+        unordered_map<int,int>freq;
+        for(int i:arr)
+        {
+            freq[i]++;
+        }
+        vector<pair<int,int>>freqb(freq.begin(),freq.end());
+        sort(freqb.begin(),freqb.end(),[](const pair<int,int>&a,const pair<int,int>&b)
+        {
+            if(a.second!=b.second)
+            {
+                return(a.second>b.second);
+            }
+            return a.first<b.first;
+        });
+        vector<int>result;
+        for(auto& i:freqb)
+        {
+            result.insert(result.end(),i.second,i.first);
+        }
+        return result;
+    }
