@@ -1,0 +1,16 @@
+vector<int>vec(vector<int>& mad,int n)
+{
+unordered_map<int,int>map;
+for(int i=0;i<n;i++)
+{
+map[mad[i]]++;
+}
+vector<int>ans;
+for(int i=0;i<n;i++)
+{
+if(map[arr[i]]==1)
+{
+ans.push_back(arr[i]);
+}
+return mad;
+}
