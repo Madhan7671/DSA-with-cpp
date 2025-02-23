@@ -1,0 +1,101 @@
+// #include<bits/stdc++.h>
+// using namespace std;
+// int main()
+// {
+//     list<int> l1;
+//     auto itr=l1.begin();
+//     cout<<*itr<<endl;
+//     advance(itr,3);
+//     //for iterating from the begining
+//     for(auto num:l1)
+//     {
+//         cout<<num;
+//     }
+//     //iterating from the end
+//     for(auto itr=l1.rbegin();itr!=l1.rend();itr++)
+//     {
+//         cout<<*itr;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+//     }
+// }
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    // 1️⃣ Creating a list and initializing
+    list<int> myList = {10, 20, 30, 40, 50};
+    list<int> anotherList = {100, 200, 300};
+
+    cout << "Initial list: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 2️⃣ Inserting elements
+    myList.push_back(60);  // Insert at end
+    myList.push_front(5);  // Insert at front
+    auto it = myList.begin();
+    advance(it, 3);        // Move iterator to 3rd position
+    myList.insert(it, 25); // Insert at specific position
+
+    cout << "After insertions: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 3️⃣ Accessing elements
+    cout << "Front: " << myList.front() << ", Back: " << myList.back() << "\n";
+
+    // 4️⃣ Removing elements
+    myList.pop_front(); // Remove first element
+    myList.pop_back();  // Remove last element
+    myList.remove(20);  // Remove all occurrences of 20
+
+    cout << "After deletions: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 5️⃣ Sorting and reversing
+    myList.sort();
+    cout << "Sorted list: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    myList.reverse();
+    cout << "Reversed list: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 6️⃣ Merging lists
+    myList.merge(anotherList);
+    cout << "After merging: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 7️⃣ Splicing (moving another list into myList)
+    list<int> newList = {500, 600, 700};
+    auto pos = myList.begin();
+    advance(pos, 2); // Move to 3rd position
+    myList.splice(pos, newList);
+
+    cout << "After splicing: ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 8️⃣ Removing duplicates
+    myList.push_back(30);
+    myList.push_back(30);
+    myList.unique(); // Removes consecutive duplicates
+
+    cout << "After unique(): ";
+    for (int num : myList) cout << num << " ";
+    cout << "\n";
+
+    // 9️⃣ Checking size and clearing the list
+    cout << "List size: " << myList.size() << "\n";
+    myList.clear();
+// Sorting in ascending order
+    myList.sort();
+    cout << "After clear(), is empty? " << (myList.empty() ? "Yes" : "No") << "\n";
+
+    return 0;
+}
