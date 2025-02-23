@@ -1,0 +1,195 @@
+#include<iostream>
+using namespace std;
+class node
+{
+    public:
+    int val;
+    node* prev;
+    node* next;
+    node(int x)
+    {
+        val=x;
+        prev=NULL;
+        next=NULL;
+    }
+};
+class doublylinkedlist
+{
+    public:
+    node* tail;
+    node* head;
+    doublylinkedlist()
+    {
+        tail=NULL;
+        head=NULL;
+    }
+    void insert(int x)
+    {
+        node* newnode=new node(x);
+        if(head==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+            return;
+        }
+        newnode->next=head;
+        head->prev=newnode;
+        head=newnode;
+    }
+    void inserte(int x)
+    {
+        node* newnode=new node(x);
+        if(tail==NULL)
+        {
+            head=newnode;
+            tail=newnode;
+            return;
+        }
+        newnode->prev=tail;
+        tail->next=newnode;
+        tail=newnode;
+    }
+    int lengt()
+    {
+        int count=1;
+        node* temp=head;
+        while(temp->next!=NULL)
+        {
+            count++;
+            temp=temp->next;
+        }
+        return count;
+    }
+    void insertp(int x,int k)
+    {
+        int n=lengt();
+        if(n<k)
+        {
+            return;
+        }
+        node* temp=head;
+        node* newnode=new node(x);
+        int count=0;
+        while(count < (k-1))
+        {
+            temp=temp->next;
+        }
+        newnode->next=temp->next;
+        temp->next=newnode;
+        newnode->next->prev=newnode;
+        return;
+    }
+    void deletes()
+    {
+        node* temp=head;
+        if(temp->next==NULL)
+        {
+            tail=NULL;
+        }
+        else{
+            head->next->prev=NULL;
+        }
+        free(temp);
+    }
+    void deletend()
+    {
+        node* temp=tail;
+        if(head==NULL)
+        {
+            return;
+        }
+        if(tail==NULL)
+        {
+            head=NULL;
+        }
+        else{
+        tail=tail->prev;
+        tail->next=NULL;
+        }
+        free(temp);
+    }
+    void deleteposition(int k)
+    {
+        int count=1;
+        node* temp=head;
+        while(count<k)
+        {
+            temp=temp->next;
+            count++;
+        }
+        temp->prev->next=temp->next;
+        temp->next->prev=temp->prev;
+        free(temp);
+    }
+    void display()
+    {
+        node* temp=head;
+        while(temp!=NULL)
+        {
+            cout<<temp->val;
+            if(temp->next!=NULL)
+            {
+                cout<<"<->";
+            }
+            temp=temp->next;
+        }
+    }
+};
+void reversedll(node* &head,node* &tail)
+{
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        node* next=temp->next;
+        temp->next=temp->prev;
+        temp->prev=next;
+        temp=next;
+    }
+    node* newhead=tail;
+    tail=head;
+    head=tail;
+    return;
+}
+bool ispalindrom(node* &head,node* &tail)
+{
+    node* temp=head;
+    node* back=head;
+    while(temp!=back && back!=temp->prev)
+    {
+        if(temp->val != back->val)
+        {
+            return false;
+        }
+        temp=temp->next;
+        back=back->prev;
+    }
+    return true;
+}
+void ifneighboursaresame(node* &head, node* &tail)
+{
+    node* temp=tail->prev;
+    while(temp!=head)
+    {
+        node* prevnode=temp->prev;
+        node* nextnode=temp->next;
+        if(temp->next==temp->prev)
+        {
+            prevnode->next=nextnode;
+            nextnode->prev=prevnode;
+            free(temp);
+        }
+        temp=prevnode;
+    }
+}
+int main()
+{
+    doublylinkedlist ll;
+    ll.insert(12);
+    ll.insert(13);
+    ll.insert(14);
+    ll.insert(15);
+    ll.inserte(16);
+    ll.inserte(17);
+    ll.inserte(18);
+    ll.display();
+}
