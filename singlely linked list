@@ -1,0 +1,118 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node
+{
+    public:
+    int val;
+    node* next;
+    node(int x)
+    {
+        val=x;
+        next=nullptr;
+    }
+};
+class linkedlist
+{
+    public:
+    node* head;
+    linkedlist()
+    {
+        head=nullptr;
+    }
+    void inserte(int x)
+    {
+        node* temp=new node(x);
+        if(head==nullptr)
+        {
+            head=temp;
+            return;
+        }
+        node* temp1=head;
+        while(temp1->next!=nullptr)
+        {
+            temp1=temp1->next;
+        }
+        temp1->next=temp;
+    }
+    void display()
+    {
+        node* temp=head;
+        while(temp!=nullptr)
+        {
+            cout<<temp->val;
+            temp=temp->next;
+            if(temp!=NULL)
+            {
+                cout<<"->";
+            }
+        }
+    }
+};
+void alternate(node* head)
+{
+    node* temp=head;
+    while((temp!=NULL)&&(temp->next!=NULL))
+    {
+        node* temp2=temp->next;
+        temp->next=temp->next->next;
+        free(temp2);
+        temp=temp->next;
+    }
+}
+void deleteduplicatessorted(node* &head)
+{
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        while((temp->next!=NULL)&&(temp->val == temp->next->val))
+        {
+            node* del=temp->next;
+            temp->next=temp->next->next;
+            free(del);
+        }
+        temp=temp->next;
+    }
+}
+void reverse(node* &head)
+{
+    if(head==NULL)
+    {
+        return;
+    }
+    reverse(head->next);
+    cout<<head->val<<" ";
+}
+node* reversel(node* &head)
+{
+    node* prev=NULL;
+    node* curr=head;
+    while(curr!=NULL)
+    {
+        node* nexta=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=nexta;
+    }
+    node* newnode=prev;
+    return newnode;
+}
+int main()
+{
+    linkedlist ll;
+    ll.inserte(10);
+    ll.inserte(11);
+    ll.inserte(12);
+    ll.inserte(12);
+    ll.inserte(12);
+    ll.inserte(12);
+    ll.inserte(13);
+    ll.inserte(14);
+    // alternate(ll.head);
+    ll.display();
+    cout<<endl;
+    deleteduplicatessorted(ll.head);
+    ll.display();
+    cout<<endl;
+    ll.head=reversel(ll.head);
+    ll.display();
+}
