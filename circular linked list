@@ -1,0 +1,79 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    int val;
+    node* next;
+    node(int x)
+    {
+        val=x;
+        next=nullptr;
+    }
+};
+class circularll
+{
+    public:
+    node* head;
+    circularll()
+    {
+        head=nullptr;
+    }
+    void inserts(int x)
+    {
+        node* newnode=new node(x);
+        node* temp=head;
+        if(head=nullptr)
+        {
+            head=newnode;
+            newnode->next=head;
+            return;
+        }
+        while(temp->next!=head)
+        {
+            temp=temp->next;
+        }
+        newnode->next=temp->next;
+        temp->next=head;
+        head=newnode;
+    }
+    void display()
+    {
+        node* temp=head;
+        do
+        {
+            cout<<temp->val;
+        }while(temp!=head);
+        cout<<endl;
+    }
+    void inserte(int x)
+    {
+        node* newnode=new node(x);
+        while(head==NULL)
+        {
+            head=newnode;
+            newnode->next=head;
+            return;
+        }
+        node* temp=head;
+        while(temp->next!=head)
+        {
+            temp=temp->next;
+        }
+        newnode->next=temp->next;
+        temp->next=newnode;
+    }
+};
+/*
+template <typename T>
+class node1
+{
+    public:
+    T val;
+    node1* next;
+    node1(T data)
+    {
+        val=data;
+        next=NULL;
+    }
+};
+*/
