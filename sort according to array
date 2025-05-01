@@ -1,0 +1,28 @@
+//time complexity of this solution is O(nlonn)
+//space complexity is O(1)
+ vector<int> sortA1ByA2(vector<int> A1, int N, vector<int> A2, int M) 
+    {
+        //Your code here
+        unordered_map<int,int> freq;
+        for(int i:A1)
+        {
+            freq[i]++;
+        }
+        vector<int>result;
+        for(int i:A2)
+        {
+            if(freq.find(i)!=freq.end())
+            {
+                result.insert(result.end(),freq[i],i);
+                freq.erase(i);
+            }
+        }
+        vector<int>remaining;
+        for(auto& i:freq)
+        {
+            remaining.insert(remaining.end(),i.second,i.first);
+        }
+        sort(remaining.begin(),remaining.end());
+        result.insert(result.end(),remaining.begin(),remaining.end());
+        return result;
+    } 

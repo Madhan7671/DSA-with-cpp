@@ -1,0 +1,13 @@
+-----Time complexity O(N)----
+bool sum exists(vector<int>& mad,int sum)
+{
+Unordered_set<int>mad1;
+for(int i:mad)
+{
+if(mad.count(i))
+{
+return true;
+}
+}
+return false;
+}

@@ -1,0 +1,31 @@
+------time complexity is O(NlonN)------
+vector<int>sort(vector<int>& arr)
+{
+unordered_map<int,int>map;
+//it will count the freq of the elements
+for(int i:arr)
+{
+map[i]++;
+}
+//we will create the vector pair because unordered map doesn't contain any sequence or order so we have to store these elements in a pair of elements
+vector<pair<int,int>>mad(map.begin(),map.end());
+
+//we will sort the element in the pair whose will sort the elements in the inceresing order
+sort(mad.begin(),mad.end(),[](const pair<int,int>a,const pair<int,int>b)
+{
+//it will check weather the elements frequency was same or not if it same then it will return the smallest freq first;
+if(a.second !=b.second)
+{
+return(a.second<b.second);
+}
+return(a.first>b.first);
+});
+//we will create the result vector to store the result
+vector<int>result;
+for(auto& i:mad)
+{
+result.insert(result.end(),i.second,i.first);
+}
+//at last we will return the resultant vector
+return result;
+}

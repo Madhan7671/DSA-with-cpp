@@ -1,0 +1,14 @@
+--pair sum using hashing with O(1) time and space complexity--
+bool pairsum(vector<int>& arr,int tar)
+{
+Unordered_set<int>mad;
+for(int i:arr)
+{
+if(mad.find(tar-i)!=mad.end()
+{
+return true;
+}
+mad.insert(i);
+}
+return false
+}

@@ -1,0 +1,14 @@
+..time complexity of O(N).........
+bool equalarry(vector<int>& a,vector<int>& b)
+{
+unordered_map<int,int> freqa,freqb;
+for(int i: a)
+{
+freqa[i]++;
+}
+for(int i:b)
+{
+freqb[i]++;
+}
+return(freqa==freb);
+}
