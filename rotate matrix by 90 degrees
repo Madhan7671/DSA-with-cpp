@@ -15,7 +15,7 @@ void rotateby90(vector<vector<int>>& mat) {
             int high=n-1;
             while(low<high)
             {
-                swap(mat[low][i],mat[high][i]);
+                swap(mat[i][low],mat[i][high]);
                 low++;
                 high--;
             }
